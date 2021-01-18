@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:storlisty/views/calendar/calendar.dart';
-import 'package:storlisty/views/shoppingList/shoppingListHome.dart';
+import 'package:storlisty/views/quickNotes/quick_notes_home.dart';
+import 'package:storlisty/views/shoppingList/shopping_list_home.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,10 +11,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _currentIndex = 0;
-  final List<Widget> _children = [
+  int currentIndex = 0;
+  final List<Widget> children = [
     ShoppingListHome(),
-    ShoppingListHome(),
+    QuickNotesHome(),
     CalendarHome()
   ];
 
@@ -23,19 +24,21 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Storlisty'),
       ),
-      body: _children[_currentIndex],
+      body: children[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         items: [
           new BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.list),
             label: 'Shopping List',
           ),
           new BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: 'Profile'),
+              icon: Icon(Icons.home), 
+              label: 'Quick Notes'
+          ),
           new BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
+            icon: Icon(Icons.calendar_today),
             label: 'Calendar',
           )
         ],
@@ -45,8 +48,7 @@ class _HomeState extends State<Home> {
 
   void onTabTapped(int index) {
     setState(() {
-      print(_currentIndex);
-      _currentIndex = index;
+      currentIndex = index;
     });
   }
 }
