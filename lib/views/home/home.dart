@@ -18,16 +18,25 @@ class _HomeState extends State<Home> {
     CalendarHome()
   ];
 
+  void onTabTapped(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Storlisty'),
+        backgroundColor: Color(0xff5DC392),
       ),
       body: children[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: currentIndex,
+        backgroundColor: Color(0xff5DC392),
+        selectedItemColor: Colors.white,
         items: [
           new BottomNavigationBarItem(
             icon: Icon(Icons.list),
@@ -44,11 +53,5 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
-  }
-
-  void onTabTapped(int index) {
-    setState(() {
-      currentIndex = index;
-    });
   }
 }
