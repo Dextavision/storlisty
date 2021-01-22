@@ -6,11 +6,11 @@ import 'package:storlisty/views/shoppingList/shopping_list_home.dart';
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _HomeState();
+    return HomeState();
   }
 }
 
-class _HomeState extends State<Home> {
+class HomeState extends State<Home> {
   int currentIndex = 0;
   final List<Widget> children = [
     ShoppingListHome(),
