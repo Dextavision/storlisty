@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:storlisty/views/shoppingList/widgets/create_shopping_item_form.dart';
 
 class ShoppingListHome extends StatefulWidget {
   @override
@@ -23,15 +24,30 @@ class _ShoppingListHomeState extends State<ShoppingListHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-          itemCount: _shoppingListItems.length,
-          itemBuilder: (context, index) => this.buildRow(index)),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() => addShoppingItem()),
-        child: Icon(Icons.add),
-        tooltip: 'Add a new Shopping List',
-        backgroundColor: Color(0xff5DC392),
-      ),
+        // body: ListView.builder(
+        //     itemCount: _shoppingListItems.length,
+        //     itemBuilder: (context, index) => this.buildRow(index)),
+      body: Align(
+        alignment: Alignment.bottomCenter,
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          tooltip: 'Add a new Shopping List',
+          backgroundColor: Color(0xff5DC392),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  content: Stack(
+                    children: [
+                      CreateShoppingItemForm()
+                    ],
+                  ),
+                );
+            });
+          },
+        ),
+      )
     );
   }
 }
