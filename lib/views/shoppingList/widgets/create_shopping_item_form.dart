@@ -7,6 +7,7 @@ class CreateShoppingItemForm extends StatefulWidget {
 
 class _CreateShoppingItemFormState extends State<CreateShoppingItemForm> {
   final _formKey = GlobalKey<FormState>();
+  String name = "";
 
   @override
   Widget build(BuildContext contect) {
@@ -15,6 +16,9 @@ class _CreateShoppingItemFormState extends State<CreateShoppingItemForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
+            onSaved: (String value) {
+              name = value;
+            },
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please enter a text';
@@ -25,7 +29,8 @@ class _CreateShoppingItemFormState extends State<CreateShoppingItemForm> {
           ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
-                  print('Shopping Lixt Item Success');
+                  _formKey.currentState.save();
+                  print('Form is valid!');
                 }
               },
               child: Text('Submit'))

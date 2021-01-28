@@ -29,23 +29,28 @@ class _ShoppingListHomeState extends State<ShoppingListHome> {
         //     itemBuilder: (context, index) => this.buildRow(index)),
       body: Align(
         alignment: Alignment.bottomCenter,
-        child: FloatingActionButton(
-          child: Icon(Icons.add),
-          tooltip: 'Add a new Shopping List',
-          backgroundColor: Color(0xff5DC392),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  content: Stack(
-                    children: [
-                      CreateShoppingItemForm()
-                    ],
-                  ),
-                );
-            });
-          },
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+          child: FloatingActionButton(
+            child: Icon(Icons.add),
+            tooltip: 'Add a new Shopping List',
+            backgroundColor: Color(0xff5DC392),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return Dialog(
+                    insetPadding: EdgeInsets.all(10),
+                    child: Container(
+                      width: double.infinity,
+                      height: 200,
+                      padding: EdgeInsets.fromLTRB(20, 50, 20, 20),
+                      child: CreateShoppingItemForm()
+                    )
+                  );
+              });
+            },
+          ),
         ),
       )
     );
