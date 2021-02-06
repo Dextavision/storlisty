@@ -7,7 +7,7 @@ class CreateShoppingItemForm extends StatefulWidget {
 
 class _CreateShoppingItemFormState extends State<CreateShoppingItemForm> {
   final _formKey = GlobalKey<FormState>();
-  String name = "";
+  String listyName = "";
 
   @override
   Widget build(BuildContext contect) {
@@ -16,8 +16,17 @@ class _CreateShoppingItemFormState extends State<CreateShoppingItemForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
+            decoration: InputDecoration(
+                icon: Icon(
+                  Icons.person,
+                  color: Color(0xff5DC392),
+                ),
+                hintText: 'Name your new awesome Listy!',
+                hintStyle: TextStyle(color: Color(0xff5DC392)),
+                labelText: 'Listy Name *',
+                labelStyle: TextStyle(color: Color(0xff5DC392))),
             onSaved: (String value) {
-              name = value;
+              listyName = value;
             },
             validator: (value) {
               if (value.isEmpty) {
@@ -25,15 +34,20 @@ class _CreateShoppingItemFormState extends State<CreateShoppingItemForm> {
               }
               return null;
             },
+            cursorColor: Color(0xff5DC392),
           ),
           ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState.validate()) {
-                  _formKey.currentState.save();
-                  print('Form is valid!');
-                }
-              },
-              child: Text('Submit'))
+            onPressed: () {
+              if (_formKey.currentState.validate()) {
+                _formKey.currentState.save();
+                print('Form is valid!');
+              }
+            },
+            child: Text('Save'),
+            style: ElevatedButton.styleFrom(
+              primary: Color(0xff5DC392), // background
+            ),
+          ),
         ],
       ),
     );

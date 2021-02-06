@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  int currentIndex = 0;
+  int _currentIndex = 0;
   final List<Widget> children = [
     ShoppingListHome(),
     QuickNotesHome(),
@@ -20,7 +20,7 @@ class HomeState extends State<Home> {
 
   void onTabTapped(int index) {
     setState(() {
-      currentIndex = index;
+      _currentIndex = index;
     });
   }
 
@@ -31,22 +31,19 @@ class HomeState extends State<Home> {
         title: Text('Storlisty'),
         backgroundColor: Color(0xff5DC392),
       ),
-      body: children[currentIndex],
+      body: children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
-        currentIndex: currentIndex,
+        currentIndex: _currentIndex,
         backgroundColor: Color(0xff5DC392),
         selectedItemColor: Colors.white,
         items: [
-          new BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: 'Shopping List',
+            label: 'Listy',
           ),
-          new BottomNavigationBarItem(
-              icon: Icon(Icons.home), 
-              label: 'Quick Notes'
-          ),
-          new BottomNavigationBarItem(
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Quick Notes'),
+          BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
             label: 'Calendar',
           )
