@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:storlisty/views/calendar/calendar.dart';
 import 'package:storlisty/views/quickNotes/quick_notes_home.dart';
-import 'package:storlisty/views/shoppingList/shopping_list_home.dart';
+import 'package:storlisty/views/listy/listy_home.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,11 +12,7 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   int _currentIndex = 0;
-  final List<Widget> children = [
-    ShoppingListHome(),
-    QuickNotesHome(),
-    CalendarHome()
-  ];
+  final List<Widget> children = [ListyHome(), QuickNotesHome(), CalendarHome()];
 
   void onTabTapped(int index) {
     setState(() {

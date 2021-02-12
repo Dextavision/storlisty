@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:storlisty/views/listy/listy.dart';
 
-class CreateShoppingItemForm extends StatefulWidget {
+class CreateListyForm extends StatefulWidget {
   @override
-  _CreateShoppingItemFormState createState() => _CreateShoppingItemFormState();
+  _CreateListyFormState createState() => _CreateListyFormState();
 }
 
-class _CreateShoppingItemFormState extends State<CreateShoppingItemForm> {
+class _CreateListyFormState extends State<CreateListyForm> {
   final _formKey = GlobalKey<FormState>();
-  String listyName = "";
+  String listyName;
+  Listy newListy;
+
+  addListy(String name) {
+    newListy = Listy(name);
+  }
 
   @override
   Widget build(BuildContext contect) {
@@ -18,7 +24,7 @@ class _CreateShoppingItemFormState extends State<CreateShoppingItemForm> {
           TextFormField(
             decoration: InputDecoration(
                 icon: Icon(
-                  Icons.person,
+                  Icons.list,
                   color: Color(0xff5DC392),
                 ),
                 hintText: 'Name your new awesome Listy!',
@@ -40,6 +46,8 @@ class _CreateShoppingItemFormState extends State<CreateShoppingItemForm> {
             onPressed: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
+                addListy(listyName);
+                Navigator.pop(context, newListy);
                 print('Form is valid!');
               }
             },
